@@ -1,0 +1,16 @@
+flask==2.2.3
+flask-cors==3.0.10
+python-dotenv==0.21.1
+requests==2.28.2
+ 
+ The  requirements.txt  file is used to specify the dependencies of the project. The  pip  tool can install all the dependencies listed in the  requirements.txt  file. 
+ The  requirements.txt  file contains the following dependencies: 
+ 
+ flask : The Flask web framework. 
+ flask-cors : A Flask extension for handling Cross-Origin Resource Sharing (CORS). 
+ python-dotenv : A Python library for reading environment variables from a  .env  file. 
+ requests : A Python library for making HTTP requests. 
+ 
+ Create a  .env  File 
+ The  .env  file is used to store environment variables. The  python-dotenv  library is used to read the environment variables from the  .env  file. 
+ Create a new file named  .env  in the  frontend/api  directory and add the following environment variables:
