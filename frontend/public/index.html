@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trost Integration Demo</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div id="root"></div>
+    <script src="/trost-sdk.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const trostSDK = new TrostSDK({
+                apiKey: 'demo-api-key-12345',
+                trackingEndpoint: '/api/track',
+                theme: 'light',
+                debug: true
+            });
+        });
+    </script>
+</body>
+</html>
