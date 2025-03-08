@@ -1,5 +1,9 @@
 import Head from 'next/head'
 import { useEffect } from 'react'
+import dynamic from 'next/dynamic'
+
+const TrostAgent = dynamic(() => import('../components/TrostAgent'), { ssr: false })
+
 
 export default function Home() {
   useEffect(() => {
@@ -187,6 +191,9 @@ export default function Home() {
           <p>&copy; 2024 ShopDemo. All rights reserved.</p>
         </div>
       </footer>
+      
+      {/* Add the TrostAgent component here */}
+      <TrostAgent />
     </div>
   );
 }
