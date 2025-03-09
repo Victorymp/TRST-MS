@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-import TrostButton from '../components/TrostButton'
-import ImprovedTrostAgent from '../components/ImprovedTrostAgent'
-import styles from '../styles/Home.module.css'
+import TrostButton from '../../trst-ms/src/components/TrostButton'
+import ImprovedTrostAgent from '../../trst-ms/src/components/ImprovedTrostAgent'
+import styles from '../../trst-ms/src/styles/Home.module.css'
 
 export default function Home() {
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
