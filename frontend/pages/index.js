@@ -1,11 +1,12 @@
 import Head from 'next/head'
-import { useEffect } from 'react'
-import dynamic from 'next/dynamic'
-
-const TrostAgent = dynamic(() => import('../components/TrostAgent'), { ssr: false })
-
+import { useEffect, useState } from 'react'
+import TrostButton from '../components/TrostButton'
+import ImprovedTrostAgent from '../components/ImprovedTrostAgent'
+import styles from '../styles/Home.module.css'
 
 export default function Home() {
+  const [isSDKLoaded, setIsSDKLoaded] = useState(false);
+
   useEffect(() => {
     // Initialize Trost SDK when component mounts
     const script = document.createElement('script');
@@ -21,6 +22,7 @@ export default function Home() {
           theme: 'light',
           debug: true
         });
+        setIsSDKLoaded(true);
       }
     };
     
@@ -33,17 +35,17 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="ecommerce-container">
+    <div className={styles.container}>
       <Head>
         <title>Medical Supplies Package | ShopDemo</title>
         <meta name="description" content="Premium quality medical supplies" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="site-header">
-        <div className="header-content">
-          <div className="logo">ShopDemo</div>
-          <nav className="main-nav">
+      <header className={styles.header}>
+        <div className={styles.headerContent}>
+          <div className={styles.logo}>ShopDemo</div>
+          <nav className={styles.mainNav}>
             <ul>
               <li><a href="#">Home</a></li>
               <li><a href="#">Products</a></li>
@@ -52,104 +54,108 @@ export default function Home() {
               <li><a href="#">Contact</a></li>
             </ul>
           </nav>
-          <div className="header-controls">
-            <button className="search-button">Search</button>
-            <button className="account-button">Account</button>
-            <button className="cart-button">Cart (0)</button>
+          <div className={styles.headerControls}>
+            <button className={styles.searchButton}>Search</button>
+            <button className={styles.accountButton}>Account</button>
+            <button className={styles.cartButton}>Cart (0)</button>
           </div>
         </div>
       </header>
       
-      <main>
-        <div className="product-container">
-          <div className="product-gallery">
-            <div className="main-image">
+      <main className={styles.main}>
+        <div className={styles.productContainer}>
+          <div className={styles.productGallery}>
+            <div className={styles.mainImage}>
               <img src="https://via.placeholder.com/600x800" alt="Medical Supplies Package" />
             </div>
-            <div className="thumbnail-images">
-              <div className="thumbnail"><img src="https://via.placeholder.com/100x100" alt="Thumbnail 1" /></div>
-              <div className="thumbnail"><img src="https://via.placeholder.com/100x100" alt="Thumbnail 2" /></div>
-              <div className="thumbnail"><img src="https://via.placeholder.com/100x100" alt="Thumbnail 3" /></div>
+            <div className={styles.thumbnailImages}>
+              <div className={styles.thumbnail}><img src="https://via.placeholder.com/100x100" alt="Thumbnail 1" /></div>
+              <div className={styles.thumbnail}><img src="https://via.placeholder.com/100x100" alt="Thumbnail 2" /></div>
+              <div className={styles.thumbnail}><img src="https://via.placeholder.com/100x100" alt="Thumbnail 3" /></div>
             </div>
           </div>
           
-          <div className="product-details">
-            <h1 className="product-title">Medical Supplies Package</h1>
-            <div className="product-price">$129.99</div>
+          <div className={styles.productDetails}>
+            <h1 className={styles.productTitle}>Medical Supplies Package</h1>
+            <div className={styles.productPrice}>$129.99</div>
             
-            <div className="product-description">
+            <div className={styles.productDescription}>
               <p>Premium quality medical supplies including first aid equipment, masks, gloves, and essential medications. Perfect for hospitals, clinics, and medical professionals.</p>
             </div>
             
-            <div className="product-meta">
+            <div className={styles.productMeta}>
               <p><strong>SKU:</strong> MED-SUP-2023-001</p>
               <p><strong>Category:</strong> Medical Supplies</p>
               <p><strong>Weight:</strong> 2.5 kg</p>
               <p><strong>Stock:</strong> In Stock</p>
             </div>
             
-            <div className="product-actions">
-              <button className="add-to-cart-button">Add to Cart</button>
-              <button className="wishlist-button">♡</button>
+            <div className={styles.productActions}>
+              <button className={styles.addToCartButton}>Add to Cart</button>
+              <button className={styles.wishlistButton}>♡</button>
             </div>
             
-            <div className="delivery-options">
+            <div className={styles.deliveryOptions}>
               <h3>Delivery Options</h3>
               
-              <div className="option">
+              <div className={styles.option}>
                 <input type="radio" name="delivery" id="standard" defaultChecked />
                 <label htmlFor="standard">
-                  <div className="option-info">
-                    <div className="option-name">Standard Delivery</div>
-                    <div className="option-description">3-5 business days</div>
+                  <div className={styles.optionInfo}>
+                    <div className={styles.optionName}>Standard Delivery</div>
+                    <div className={styles.optionDescription}>3-5 business days</div>
                   </div>
-                  <div className="option-price">Free</div>
+                  <div className={styles.optionPrice}>Free</div>
                 </label>
               </div>
               
-              <div className="option">
+              <div className={styles.option}>
                 <input type="radio" name="delivery" id="express" />
                 <label htmlFor="express">
-                  <div className="option-info">
-                    <div className="option-name">Express Delivery</div>
-                    <div className="option-description">1-2 business days</div>
+                  <div className={styles.optionInfo}>
+                    <div className={styles.optionName}>Express Delivery</div>
+                    <div className={styles.optionDescription}>1-2 business days</div>
                   </div>
-                  <div className="option-price">$9.99</div>
+                  <div className={styles.optionPrice}>$9.99</div>
                 </label>
               </div>
               
-              <div className="option">
+              <div className={styles.option}>
                 <input type="radio" name="delivery" id="same-day" />
                 <label htmlFor="same-day">
-                  <div className="option-info">
-                    <div className="option-name">Same Day Delivery</div>
-                    <div className="option-description">Available for orders before 2pm</div>
+                  <div className={styles.optionInfo}>
+                    <div className={styles.optionName}>Same Day Delivery</div>
+                    <div className={styles.optionDescription}>Available for orders before 2pm</div>
                   </div>
-                  <div className="option-price">$19.99</div>
+                  <div className={styles.optionPrice}>$19.99</div>
                 </label>
               </div>
               
-              <div className="trost-option">
-                <div className="trost-logo">TROST</div>
-                <div className="trost-info">
-                  <div className="trost-title">Track with Trost</div>
-                  <div className="trost-description">Secure tracking, delivery notifications, and reselling options after use</div>
+              <div className={styles.trostOption}>
+                <div className={styles.trostInfo}>
+                  <div className={styles.trostTitle}>TROST</div>
+                  <div className={styles.trostDescription}>Secure tracking, delivery notifications, and reselling options after use</div>
                 </div>
-                <div data-trost-tracking data-trost-product-id="MED-SUP-2023-001" data-trost-tracking-id="UT1234567890"></div>
+                <div className={styles.trostButtonContainer}>
+                  <TrostButton 
+                    productId="MED-SUP-2023-001" 
+                    trackingId="UT1234567890" 
+                  />
+                </div>
               </div>
             </div>
             
-            <div className="product-additional-info">
-              <div className="info-section">
+            <div className={styles.productAdditionalInfo}>
+              <div className={styles.infoSection}>
                 <h3>Product Details</h3>
-                <div className="section-content">
+                <div className={styles.sectionContent}>
                   <p>This comprehensive medical supplies package contains essential items for medical professionals, including PPE, diagnostic tools, and first aid supplies.</p>
                 </div>
               </div>
               
-              <div className="info-section">
+              <div className={styles.infoSection}>
                 <h3>Shipping Information</h3>
-                <div className="section-content">
+                <div className={styles.sectionContent}>
                   <p>Free delivery on orders over $100. Standard delivery $4.50.</p>
                   <p>Free returns on qualifying orders.</p>
                 </div>
@@ -159,14 +165,14 @@ export default function Home() {
         </div>
       </main>
       
-      <footer className="site-footer">
-        <div className="footer-content">
-          <div className="footer-section">
+      <footer className={styles.footer}>
+        <div className={styles.footerContent}>
+          <div className={styles.footerSection}>
             <h3>About Us</h3>
             <p>ShopDemo is a premium provider of medical supplies for healthcare professionals.</p>
           </div>
           
-          <div className="footer-section">
+          <div className={styles.footerSection}>
             <h3>Customer Service</h3>
             <ul>
               <li><a href="#">Contact Us</a></li>
@@ -176,9 +182,9 @@ export default function Home() {
             </ul>
           </div>
           
-          <div className="footer-section">
+          <div className={styles.footerSection}>
             <h3>Follow Us</h3>
-            <div className="social-links">
+            <div className={styles.socialLinks}>
               <a href="#">Facebook</a>
               <a href="#">Twitter</a>
               <a href="#">Instagram</a>
@@ -187,13 +193,13 @@ export default function Home() {
           </div>
         </div>
         
-        <div className="footer-bottom">
+        <div className={styles.footerBottom}>
           <p>&copy; 2024 ShopDemo. All rights reserved.</p>
         </div>
       </footer>
       
-      {/* Add the TrostAgent component here */}
-      <TrostAgent />
+      {/* Add the TrostAgent component for hovering */}
+      <ImprovedTrostAgent />
     </div>
   );
 }
