@@ -11,8 +11,8 @@ const TrostButton = ({ productId, trackingId }) => {
     setIsTracking(true);
     
     try {
-      // Call the tracking API
-      const response = await fetch(`/api/track/${trackingId}`);
+      // Call the tracking API local host
+      const response = await fetch(`http://localhost:3001/tracking/${trackingId}`);
       
       if (!response.ok) {
         throw new Error('Failed to fetch tracking data');
